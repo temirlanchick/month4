@@ -1,4 +1,4 @@
-from django.shortcuts import HttpResponse
+from django.shortcuts import HttpResponse, render
 
 
 def hello(request):
@@ -14,3 +14,13 @@ def current_date(request):
 def goodbye(request):
     if request.method == 'GET':
         return HttpResponse('Goodbye user')
+
+
+def main_view(request):
+    if request.method == 'GET':
+        return render(request, 'layouts/main.html')
+
+
+def products_view(request):
+    if request.method == 'GET':
+        return render(request, 'products/main.html')
