@@ -1,19 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>
-        ИГРЫ В STEAM
-        ASSASIN CREED SERIES
-        MAFIA SERIES
-        CALL OF DUTY SERIES
-        GTA SERIES
-        FORZA HORIZON SERIES
-        MINECRAFT !!!
-    </h1>
+{% extends 'index.html' %}
 
-</body>
-</html>
+{% block content %}
+<h1>
+   Products
+</h1>
+<h2>
+    {% for product in products %}
+        <p>{{ product.title }}</p>
+        <p>{{ product.price }}</p>
+        <p>{{ product.image }}</p>
+    {% endfor %}
+</h2>
+{% endblock %}
