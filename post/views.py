@@ -1,6 +1,6 @@
-from django.shortcuts import HttpResponse, render
-
+from django.shortcuts import HttpResponse, render, redirect
 from post.models import Product, Category
+from post.forms import ProductCreateForm, CategoryCreateForm
 
 
 def hello(request):
@@ -34,8 +34,44 @@ def products_view(request):
 def categories_view(request):
     if request.method == 'GET':
         categories = Category.objects.all()
-        return render(request, 'products/categories.html', context={
+        return render(request, 'categories/categories.html', context={
             "categories": categories
         })
 
 
+def product_create(request):
+    if request.method == 'GET':
+        context = {
+            "form": ProductCreateForm
+        }
+        return render(request, 'products/create.html', context)
+    if request.method == 'PRODUCT':
+        form = ProductCreateForm(request.PRODUCT, request.FILES)
+        if form.is_valid():
+            Product.objects.create(**form.cleaned_data)
+            return redirect("/products/")
+
+        context = {
+            "form": form
+        }
+
+        return render(request, 'products/create.html', context)
+
+
+def category_create(request):
+    if request.method == 'GET':
+        context = {
+            "form": CategoryCreateForm
+        }
+        return render(request, 'categories/create.html', context)
+    if request.method == 'CATEGORY':
+        form = CategoryCreateForm(request.CATEGORY, request.FILES)
+        if form.is_valid():
+            Category.objects.create(**form.cleaned_data)
+            return redirect("/categories/")
+
+        context = {
+            "form": form
+        }
+
+        return render(request, 'categories/create.html', context)
