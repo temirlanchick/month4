@@ -1,6 +1,7 @@
-
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from post import views
 
 urlpatterns = [
@@ -9,9 +10,9 @@ urlpatterns = [
     path('current_date/', views.current_date),
     path('goodbye/', views.goodbye),
     path('', views.main_view),
-    path('products/create/', views.product_create),
-    path('products/', views.products_view),
-    path('categories/create', views.category_create),
-    path('categories/', views.categories_view)
+    path('', include('post.urls')),
+    path('users/', include('users.urls'))
 ]
 
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
