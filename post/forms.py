@@ -1,4 +1,5 @@
 from django import forms
+from post.models import Product
 
 
 class ProductCreateForm(forms.Form):
@@ -22,3 +23,9 @@ class CategoryCreateForm(forms.ModelForm):
 class ReviewCreateForm(forms.ModelForm):
     rating = forms.IntegerField()
     review_title = forms.CharField
+
+
+class ProductCreateForm2(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['title', 'image', 'price']

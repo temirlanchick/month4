@@ -1,62 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Detail</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
+{% extends 'index.html' %}
 
-        .product {
-            margin-bottom: 20px;
-        }
+{% block content %}
 
-        .reviews {
-            margin-top: 20px;
-        }
+    <h1>
+        Product detail
+    </h1>
 
-        .review {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
+    <h2>
+    {{ product.title }} {{ product.rate }}
+    </h2>
 
-        .rating {
-            color: gold;
-        }
-    </style>
-</head>
-<body>
+    <p>
+    {{ product.content }}
+    </p>
 
-    <header>
-        <h1>Product Detail Page</h1>
-    </header>
+    <img src="/media/{{ product.image }}" width="500">
 
-    <section class="product">
-        <h2>Product Name</h2>
-        <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget odio ut velit hendrerit aliquam vel a urna.</p>
-
-    </section>
-
-    <section class="reviews">
-        <h2>Customer Reviews</h2>
-
-
-        <div class="review">
-            <h3>Customer Name</h3>
-            <p class="rating">Rating: 5 stars</p>
-            <p>Review: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget odio ut velit hendrerit aliquam vel a urna.</p>
-        </div>
+    <a href="update/">Update</a>
+    <h2>
+    Dates:
+    </h2>
+    <p>Created: {{ product.created_at }}</p>
+    <p>Updated: {{ product.updated_at }}</p>
 
 
 
-    </section>
-
-    <footer>
-        <p>&copy; 2023 My Store</p>
-    </footer>
-
-</body>
-</html>
+{% endblock %}

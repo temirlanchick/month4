@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             name='Product',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(blank=True, null=True, upload_to='products')),
+                ('image', models.ImageField(blank=True, null=True, upload_to='products_image')),
                 ('title', models.CharField(max_length=255)),
                 ('price', models.IntegerField()),
                 ('created_at', models.DateTimeField(auto_now_add=True)),

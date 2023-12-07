@@ -5,6 +5,16 @@
    Products
 </h1>
 <h2>
+    <form action="/products/" method="GET">
+    <input type="text" name="search" placeholder="Search">
+    <input type="submit" value="Search">
+  </form>
+
+  <a href="?order=title" method="GET">Title</a>
+  <a href="?order=-title" method="GET">-Title</a>
+  <a href="?order=created_at" method="GET">Date</a>
+  <a href="?order=-created_at" method="GET">-Date</a>
+
     {% for product in products %}
         <p>{{ product.title }}</p>
         <p>{{ product.price }}</p>

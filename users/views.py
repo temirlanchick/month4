@@ -50,7 +50,7 @@ def auth_view(request):
 
             if user is not None:
                 login(request, user)
-                return redirect('/products/')
+                return redirect('/products_image/')
             else:
                 form.add_error(
                     'username',
@@ -66,7 +66,7 @@ def auth_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('/products/')
+    return redirect('/products_image/')
 
 
 def profile_view(request):
